@@ -46,13 +46,11 @@
                 stepRight()
             }
 
+            
             function toggleMoving(e)
             {
-                // which object just had something done to it, which called toggleMoving? this
-                // alert(this.src)
-
-                // which event was just done to "this", which called toggleMoving?
-                if(e.which == 39) // 39 is the > right arrow key
+                //right arrow key
+                if(e.which == 39) 
                 {
                     if(moveTimer == null)
                     {
@@ -64,7 +62,8 @@
                         moveTimer = null
                     }
                 }
-                else if(e.which == 37) // the < left arrow key
+                //left arrow key
+                else if(e.which == 37)
                 {
                     if(moveTimer == null)
                     {
@@ -80,8 +79,7 @@
 
             window.onload=function()
             {
-                alien = document.getElementById("a")
-                // alien.onclick=toggleMoving              
+                alien = document.getElementById("a")            
                 window.onkeydown=toggleMoving
             }
 
