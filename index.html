@@ -6,10 +6,89 @@
             Hannah Cabug and Catherine Lam
         </title>
         <script>
+            moveTimer = null 
+            stepNumber = 0
+
+            function stepLeft()
+            {
+                stepNumber = stepNumber + 1
+
+                if(stepNumber > 30)
+                {
+                    stepNumber = 0
+                }
+
+                alien.src = "/alien/alienlwalk" + stepNumber + ".gif"
+            }
+
+            function stepRight()
+            {
+                stepNumber = stepNumber + 1
+
+                if(stepNumber > 30)
+                {
+                    stepNumber = 0
+                }
+
+                alien.src = "/alien/alienrwalk" + stepNumber + ".gif"
+            }
+
+            function moveLeft()
+            {
+                alien.style.left = parseInt(alien.style.left) - 1 + "px"
+                stepLeft()
+
+            }
+
+            function moveRight()
+            {
+                alien.style.left = parseInt(alien.style.left) + 1 + "px"
+                stepRight()
+            }
+
+            function toggleMoving(e)
+            {
+                // which object just had something done to it, which called toggleMoving? this
+                // alert(this.src)
+
+                // which event was just done to "this", which called toggleMoving?
+                if(e.which == 39) // 39 is the > right arrow key
+                {
+                    if(moveTimer == null)
+                    {
+                        moveTimer = setInterval(moveRight, 20)
+                    }
+                    else
+                    {
+                        clearInterval(moveTimer)
+                        moveTimer = null
+                    }
+                }
+                else if(e.which == 37) // the < left arrow key
+                {
+                    if(moveTimer == null)
+                    {
+                        moveTimer = setInterval(moveLeft, 20)
+                    }
+                    else
+                    {
+                        clearInterval(moveTimer)
+                        moveTimer = null
+                    }
+                }
+            }
+
+            window.onload=function()
+            {
+                alien = document.getElementById("a")
+                // alien.onclick=toggleMoving              
+                window.onkeydown=toggleMoving
+            }
 
         </script>
     </head>
     <body>
-        
+        <img src="/alien/alienlwalk0.gif" id="a" style="position:absolute;left:9px">
+       
     </body>
 </html>
