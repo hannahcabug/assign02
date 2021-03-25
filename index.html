@@ -40,6 +40,13 @@
 
             }
 
+            function jumpUp()
+            {
+                alien.style.top = parseInt(alien.style.top) - 1 + "px"
+                stepUp()
+
+            }
+
             function moveRight()
             {
                 alien.style.left = parseInt(alien.style.left) + 1 + "px"
@@ -75,6 +82,19 @@
                         moveTimer = null
                     }
                 }
+                //up arrow key
+                else if(e.which == 38)
+                {
+                    if(moveTimer == null)
+                    {
+                        moveTimer = setInterval(jumpUp, 20)
+                    }
+                    else
+                    {
+                        clearInterval(moveTimer)
+                        moveTimer = null
+                    }
+                }
             }
 
             window.onload=function()
@@ -86,7 +106,7 @@
         </script>
     </head>
     <body>
-        <img src="/alien/alienlwalk0.gif" id="a" style="position:absolute;left:9px">
+        <img src="/alien/alienlwalk0.gif" id="a" style="position:absolute;left:9px; top:300px">
        
     </body>
 </html>
